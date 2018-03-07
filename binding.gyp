@@ -18,8 +18,11 @@
       ],
       'conditions' : [
         [ 'OS == "linux"', {
-          'libraries' : [ 
-            '-lodbc' 
+          'libraries' : [
+            '/usr/lib/x86_64-linux-gnu/libltdl.a',
+            '/usr/lib/x86_64-linux-gnu/libodbc.a',
+            '/usr/lib/x86_64-linux-gnu/libodbccr.a',
+            '/usr/lib/x86_64-linux-gnu/libodbcinst.a'
           ],
           'cflags' : [
             '-g'
@@ -29,9 +32,12 @@
           'include_dirs': [
             '/usr/local/include'
           ],
-          'libraries' : [
-            '-L/usr/local/lib',
-            '-lodbc' 
+          'libraries' : [ 
+            '-L/usr/lib -liconv',
+            '/usr/local/lib/libltdl.a',
+            '/usr/local/lib/libodbc.a',
+            '/usr/local/lib/libodbccr.a',
+            '/usr/local/lib/libodbcinst.a'
           ]
         }],
         [ 'OS=="win"', {
@@ -40,7 +46,7 @@
             'src/odbc.cpp'
           ],
           'libraries' : [ 
-            '-lodbccp32.lib' 
+            'odbccp32.lib'
           ]
         }]
       ]
